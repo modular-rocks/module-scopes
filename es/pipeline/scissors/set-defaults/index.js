@@ -3,6 +3,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 import Enhanced from '../../../algorithms/enhanced';
 import Scope from '../../../algorithms/scope';
 
+var testForBundler = function testForBundler(opts) {
+  if (!opts.bundler || !opts.bundler.resolve || !opts.bundler.load) {
+    new Error("No bundler found for ModularRocks. Ensure a bundler is passed into the options argument under the property 'bundler'.");
+  }
+};
+
 var setTypes = function setTypes(opts) {
   if (opts.types && opts.types.length) return;
   opts.types = [new Enhanced('rocks')];
@@ -44,7 +50,8 @@ var tidy = function tidy(type) {
 };
 
 export default (function (opts) {
-  opts._dirKeys = {};
+  // opts._dirKeys = {}
+  testForBundler(opts);
 
   setTypes(opts);
   setRegex(opts);

@@ -1,5 +1,10 @@
-import find from './find';
 import { file, folder } from './extend';
+
+var find = function find(metadata, env) {
+  return function (meta) {
+    return env.config.opts.bundler.load(meta, metadata, env);
+  };
+};
 
 export default function (env) {
   var type = this.section.type;

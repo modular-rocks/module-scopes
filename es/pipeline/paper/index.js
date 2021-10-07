@@ -12,7 +12,7 @@ var createContainer = function createContainer() {
   return { '/': {} };
 };
 
-var wrap = function wrap(metadataContainer, dir, opts) {
+var wrap = function wrap(metadataContainer, opts) {
   opts.types = opts.types.map(reload);
   var scopes = createContainer();
   var enhancedContainer = createContainer();
@@ -26,7 +26,6 @@ var wrap = function wrap(metadataContainer, dir, opts) {
       container: metadataContainer
     },
     config: {
-      dir: dir,
       opts: opts,
       extensions: get()
     }

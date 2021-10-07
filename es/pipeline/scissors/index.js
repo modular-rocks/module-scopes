@@ -2,14 +2,13 @@ import setDefaults from './set-defaults';
 import format from './format';
 import match from './match';
 import paths from './paths';
-import resolve from './resolve';
 
 var generator = function generator(container, opts) {
   var formated = format(container, opts);
   return function (path) {
-    var _resolve = resolve(path, opts),
-        fullPath = _resolve.fullPath,
-        scopedPath = _resolve.scopedPath;
+    var _opts$bundler$resolve = opts.bundler.resolve(path, opts),
+        fullPath = _opts$bundler$resolve.fullPath,
+        scopedPath = _opts$bundler$resolve.scopedPath;
 
     var _paths = paths(scopedPath),
         relative = _paths.relative,
