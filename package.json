@@ -41,8 +41,5 @@
     "type": "git",
     "url": "https://github.com/modular-rocks/core.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "dependencies": {}
 }
