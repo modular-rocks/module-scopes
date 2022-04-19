@@ -1,5 +1,4 @@
-import Enhanced from '../../../algorithms/enhanced'
-import Scope from '../../../algorithms/scope'
+import { Scope, Logic, Enhanced } from '../../../algorithms'
 
 const testForBundler = (opts) => {
   if (!opts.bundler || !opts.bundler.resolve || !opts.bundler.load) {
@@ -19,7 +18,17 @@ const setRegex = (opts) => {
 
 const convertStrings = (types, type, index) => {
   if (typeof type !== 'string') return
-  types[index] = new Scope(type)
+
+  switch(type[0]) {
+    case '+':
+      types[index] = new Logic(type)
+      break;
+    case '*':
+      types[index] = new Enhanced(type)
+      break;
+    default:
+      types[index] = new Scope(type)
+  }
 }
 
 const setIndex = (index, type) => {

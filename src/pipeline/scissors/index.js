@@ -18,7 +18,7 @@ const generator = (container, opts) => {
 const cut = (opts) => {
   const container = {}
   setDefaults(opts)
-
+  
   const generate = generator(container, opts)
 
   return (collection) => {

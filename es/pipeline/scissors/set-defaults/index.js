@@ -1,7 +1,6 @@
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-import Enhanced from '../../../algorithms/enhanced';
-import Scope from '../../../algorithms/scope';
+import { Scope, Logic, Enhanced } from '../../../algorithms';
 
 var testForBundler = function testForBundler(opts) {
   if (!opts.bundler || !opts.bundler.resolve || !opts.bundler.load) {
@@ -21,7 +20,17 @@ var setRegex = function setRegex(opts) {
 
 var convertStrings = function convertStrings(types, type, index) {
   if (typeof type !== 'string') return;
-  types[index] = new Scope(type);
+
+  switch (type[0]) {
+    case '+':
+      types[index] = new Logic(type);
+      break;
+    case '*':
+      types[index] = new Enhanced(type);
+      break;
+    default:
+      types[index] = new Scope(type);
+  }
 };
 
 var setIndex = function setIndex(index, type) {

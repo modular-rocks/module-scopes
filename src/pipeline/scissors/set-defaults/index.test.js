@@ -35,6 +35,31 @@ describe("ModularRocks SetDefaults", () => {
     expect(opts.types[0].pathname).toEqual('data');
   });
 
+  test("cc", () => {
+    const opts = {
+      types: ['+data']
+    }
+
+    setDefaults(opts)
+
+    expect(opts.types.length).toEqual(1);
+    expect(opts.types[0].algorithm).toEqual('Logic');
+    expect(opts.types[0].pathname).toEqual('+data');
+  });
+
+  test("ccc", () => {
+    const opts = {
+      types: ['*data']
+    }
+
+    setDefaults(opts)
+
+    expect(opts.types.length).toEqual(1);
+    expect(opts.types[0].algorithm).toEqual('Enhanced');
+    expect(opts.types[0].pathname).toEqual('*data');
+  });
+
+
   test("d", () => {
     const opts = {
       types: [{attr: 'data'}]
