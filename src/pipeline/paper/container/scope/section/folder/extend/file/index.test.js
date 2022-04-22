@@ -1,5 +1,5 @@
 import extend from './index.js'
-import { add, get } from '../../../../../../../../../extensions'
+import { add, get } from '../../../../../../../../extensions'
 
 describe("ModularRocks paper prep extend config configure", () => {
   test("file works with extension", () => {

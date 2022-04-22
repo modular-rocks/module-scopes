@@ -1,7 +1,38 @@
 import push from './push'
-import enhance from './enhance'
+// import enhance from './enhance'
 import metadata from './metadata'
 import { add, create } from './children'
+import { file, folder } from './extend'
+
+const find = (metadata, env) => (meta) => {
+  return env.config.opts.bundler.load(meta, metadata, env)
+}
+
+const bind = function(metadata, env) {
+  rebind.call(this, env, find(metadata, env))
+  rebind.call(this, env, file(env))
+}
+
+const rebind = function(env, fn) {
+  this.modules = this.files.map(fn)
+  env.modules = this.modules
+}
+
+const attach = function(name, enhanced, env) {
+  if (name) {
+    return env.scope[name] = enhanced
+  }
+
+  if (typeof enhanced == 'object') {
+    for (var n in enhanced) {
+      env.scope[n] = enhanced[n]
+    }
+    return
+  }
+
+  console.warn('Attaching to scope as "unknown" - check your logic in ' + metadata.absolutePath)
+  env.scope['unknown'] = enhanced
+}
 
 export default class Folder {
   constructor(relativeFolderPath, section, env) {
@@ -19,36 +50,41 @@ export default class Folder {
   }
 
   build() {
-    const { section, metadata } = this
-    const type = section.type
-    const { children, childStorage, name } = create(section, this)
+    const { section, metadata, extensions, files } = this
+    const { type, scope } = section
+    const { data, config } = this.env
+
+    let { children, childStorage, name } = create(section, this)
 
     const env = {
+      config,
+      metadata,
+      files,
+      children,
+      scope: childStorage,
+      prop: name,
       data: {
-        folder: this,
         section,
         type,
-        scope: section.scope,
+        scope,
+        folder: this,
       },
       containers: {
         metadata: this.env.metadata.container,
-        data: this.env.data.container,
-        enhanced: this.env.data.enhanced,
-      },
-      config: this.env.config,
-      metadata: this.metadata,
-      files: this.files,
-      scope: childStorage,
-      children,
-      prop: name
+        data: data.container,
+        enhanced: data.enhanced,
+      }
     }
 
-    const enhanced = enhance.call(this, env)
+    bind.call(this, metadata, env)
+
+    const enhanced = folder(type.run.bind(type), env)
+
+    attach(name, enhanced, env)
+    add(enhanced, children)
+
     env.fn = enhanced
 
-    childStorage[name] = enhanced
-    children && add(enhanced, children)
-
-    return childStorage
+    return env.scope
   }
 }

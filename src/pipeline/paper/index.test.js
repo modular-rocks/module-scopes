@@ -12,7 +12,7 @@ import bundler from '../.././test-examples/basic-bundler'
 
 import req from '@dolgit/fakin-jax'
 const opts = {}
-const dir = req.context('../../test-examples/rock-examples', true, /\.js$/, __dirname)
+const dir = req.context('../../test-examples', true, /\.js$/, __dirname)
 
 describe("ModularRocks paper wrap", () => {
   test("ModularRocks paper wrap returns a scope with functions - full test", () => {
@@ -63,6 +63,27 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.first['first-example']({x: 4})).toEqual(12);
     expect(testRock.rocks.first.second['times-by-ten']({x: 4})).toEqual(40);
     expect(testRock.rocks.first.number).toEqual(4);
+  });
+
+  test("Test basic scope - shallow nested", () => {
+    opts.dir = dir
+    opts.types = [new Scope('rocks'), new Scope('components')]
+    opts.bundler = bundler
+    bundler.set('dir', dir)
+    bundler.set('keys', dir.keys())
+
+    const collection = dir.keys()
+    const cleanDot = (x) => x[0] == '.' ? x.slice(1) : x
+    const scope = Scissors.cut(opts)(collection)
+    let raw = Rocks.refine(scope, opts)
+    const rocks = Paper.wrap(raw, opts)
+    const path = `${process.env.PWD}/src/test-examples/shallow-nested/`
+    const testRock = rocks[path]
+    expect(testRock.rocks.one({num: 4})).toEqual(16);
+    expect(testRock.components.deep.one(4)).toEqual(4);
+    expect(testRock.components.deep.two(4)).toEqual(80);
+    expect(testRock.components.one({num: 4})).toEqual(60);
+    expect(testRock.rocks.two({num: 4})).toEqual(8);
   });
 
   test("Extensions work", () => {

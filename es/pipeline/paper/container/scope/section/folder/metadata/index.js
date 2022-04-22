@@ -7,15 +7,16 @@ var clean = function clean(path) {
 export default (function (relativeFolderPath, section, env) {
   var relPathPieces = path2Pieces(relativeFolderPath);
   var depth = relPathPieces.length;
-  var action = relPathPieces.slice(-1)[0];
   var root = env.config.opts.root;
+
+
+  var action = relPathPieces.slice(-1)[0];
 
   var _splitName = splitName(action),
       name = _splitName[0],
       extensions = _splitName.slice(1);
 
   var scope = section.scope;
-
   var relativePath = createPath(scope.path, relativeFolderPath, section.type);
   var absolutePath = relativePath;
 

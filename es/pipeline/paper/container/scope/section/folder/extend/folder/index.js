@@ -5,6 +5,8 @@ var type = 'Folder';
 
 export default (function (prevFn, env) {
   var extensions = env.data.folder.extensions.slice();
+  if (!extensions.length) return prevFn(env);
+
   var fn1 = extensions.splice(0, 1)[0];
   var fn = fn1(prevFn, env, type);
   extensions.map(function (m) {

@@ -15,7 +15,7 @@ const collectRemaining = (relativeFolderPath, obj, children) => {
 }
 
 export default (section, folder) => {
-  const { name, relativeFolderPath, parentPath } = folder.metadata
+  let { name, relativeFolderPath, parentPath } = folder.metadata
   const childStorage = findOrCreate(section.children, parentPath)
   const children = findOrCreate(section.children, relativeFolderPath)
 
