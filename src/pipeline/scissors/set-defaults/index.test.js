@@ -43,8 +43,8 @@ describe("ModularRocks SetDefaults", () => {
     setDefaults(opts)
 
     expect(opts.types.length).toEqual(1);
+    expect(opts.types[0].pathname).toEqual('data');
     expect(opts.types[0].algorithm).toEqual('Logic');
-    expect(opts.types[0].pathname).toEqual('+data');
   });
 
   test("ccc", () => {
@@ -55,8 +55,8 @@ describe("ModularRocks SetDefaults", () => {
     setDefaults(opts)
 
     expect(opts.types.length).toEqual(1);
+    expect(opts.types[0].pathname).toEqual('data');
     expect(opts.types[0].algorithm).toEqual('Enhanced');
-    expect(opts.types[0].pathname).toEqual('*data');
   });
 
 
