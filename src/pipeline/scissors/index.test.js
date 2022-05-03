@@ -2,7 +2,7 @@ import paths from '../.././test-examples/json/paths.js'
 import sliced from '../.././test-examples/json/cut.js'
 
 import { cut } from './index.js'
-import { Scope } from '../.././algorithms'
+import { Scope } from '../.././factories'
 
 
 import bundler from '../.././test-examples/basic-bundler'

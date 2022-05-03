@@ -1,9 +1,9 @@
 var tools = require('./tools');
 var pipeline = require('./pipeline');
-var algorithms = require('./algorithms');
+var factories = require('./factories');
 var store = require('./store');
 var features = require('./features');
-var extensions = require('./extensions');
+var enhancers = require('./enhancers');
 
 var build = features.build,
     get = features.get,
@@ -13,13 +13,13 @@ var build = features.build,
 
 export default {
   pipeline: pipeline,
-  algorithms: algorithms,
+  factories: factories,
   tools: tools,
   build: build,
   get: get,
   prepare: prepare,
   wrap: wrap,
-  extensions: extensions,
+  enhancers: enhancers,
   features: features,
   store: store
 };

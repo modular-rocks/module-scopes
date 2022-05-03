@@ -44,13 +44,13 @@ export default class Folder {
 
     this.metadata = metadata(relativeFolderPath, section, env)
 
-    const exts = env.config.extensions
-    const extensions = this.metadata.extensions
-    this.extensions = extensions.reverse().map(push(exts)).filter(Boolean)
+    const exts = env.config.enhancers
+    const enhancers = this.metadata.enhancers
+    this.enhancers = enhancers.reverse().map(push(exts)).filter(Boolean)
   }
 
   build() {
-    const { section, metadata, extensions, files } = this
+    const { section, metadata, enhancers, files } = this
     const { type, scope } = section
     const { data, config } = this.env
 

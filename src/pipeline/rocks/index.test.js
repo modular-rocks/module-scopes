@@ -2,7 +2,7 @@ import scopes from '../.././test-examples/json/cut.js'
 import refined from '../.././test-examples/json/refined.js'
 
 import { refine } from './index.js'
-import { Scope } from '../.././algorithms'
+import { Scope } from '../.././factories'
 
 const type1 = new Scope('rocks')
 type1.index = 0

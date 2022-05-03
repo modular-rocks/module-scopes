@@ -9,8 +9,8 @@ var createScopes = function createScopes(createScope, current) {
   }
 };
 
-export default (function (relative, container, types, matched) {
-  var createScope = buildScope(container, types);
+export default (function (relative, container, factories, matched) {
+  var createScope = buildScope(container, factories);
   createScopes(createScope, rejectUndefined(splitPath(relative)));
   createScope('/');
   return;

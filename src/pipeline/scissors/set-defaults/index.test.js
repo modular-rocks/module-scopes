@@ -7,7 +7,7 @@ describe("ModularRocks SetDefaults", () => {
     setDefaults(opts)
 
     expect(opts.factories.length).toEqual(1);
-    expect(opts.factories[0].algorithm).toEqual('Procedural');
+    expect(opts.factories[0].factory).toEqual('Procedural');
     expect(opts.factories[0].pathname).toEqual('rocks');
   });
 
@@ -19,7 +19,7 @@ describe("ModularRocks SetDefaults", () => {
     setDefaults(opts)
 
     expect(opts.factories.length).toEqual(1);
-    expect(opts.factories[0].algorithm).toEqual('Procedural');
+    expect(opts.factories[0].factory).toEqual('Procedural');
     expect(opts.factories[0].pathname).toEqual('rocks');
   });
 
@@ -31,7 +31,7 @@ describe("ModularRocks SetDefaults", () => {
     setDefaults(opts)
 
     expect(opts.factories.length).toEqual(1);
-    expect(opts.factories[0].algorithm).toEqual('Scope');
+    expect(opts.factories[0].factory).toEqual('Scope');
     expect(opts.factories[0].pathname).toEqual('data');
   });
 
@@ -44,7 +44,7 @@ describe("ModularRocks SetDefaults", () => {
 
     expect(opts.factories.length).toEqual(1);
     expect(opts.factories[0].pathname).toEqual('data');
-    expect(opts.factories[0].algorithm).toEqual('Logic');
+    expect(opts.factories[0].factory).toEqual('Logic');
   });
 
   test("ccc", () => {
@@ -56,7 +56,7 @@ describe("ModularRocks SetDefaults", () => {
 
     expect(opts.factories.length).toEqual(1);
     expect(opts.factories[0].pathname).toEqual('data');
-    expect(opts.factories[0].algorithm).toEqual('Procedural');
+    expect(opts.factories[0].factory).toEqual('Procedural');
   });
 
 
@@ -78,29 +78,29 @@ describe("ModularRocks SetDefaults", () => {
 
     setDefaults(opts)
 
-    expect(opts.factories[0].algorithm).toEqual('Scope');
-    expect(opts.factories[1].algorithm).toEqual(undefined);
-    expect(opts.factories[2].algorithm).toEqual(undefined);
+    expect(opts.factories[0].factory).toEqual('Scope');
+    expect(opts.factories[1].factory).toEqual(undefined);
+    expect(opts.factories[2].factory).toEqual(undefined);
   });
 
 
   test("f", () => {
     const opts = {
-      factories: [{pathname: 'data', algorithm: 'Procedural'}]
+      factories: [{pathname: 'data', factory: 'Procedural'}]
     }
 
     setDefaults(opts)
 
-    expect(opts.factories[0].algorithm).toEqual('Procedural');
+    expect(opts.factories[0].factory).toEqual('Procedural');
   });
 
   test("g", () => {
     const opts = {
-      factories: [{pathname: 'data', algorithm: 'Rock'}]
+      factories: [{pathname: 'data', factory: 'Rock'}]
     }
 
     setDefaults(opts)
 
-    expect(opts.factories[0].algorithm).toEqual('Rock');
+    expect(opts.factories[0].factory).toEqual('Rock');
   });
 });

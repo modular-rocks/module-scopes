@@ -52,15 +52,15 @@ var Folder = function () {
 
     this.metadata = metadata(relativeFolderPath, section, env);
 
-    var exts = env.config.extensions;
-    var extensions = this.metadata.extensions;
-    this.extensions = extensions.reverse().map(push(exts)).filter(Boolean);
+    var exts = env.config.enhancers;
+    var enhancers = this.metadata.enhancers;
+    this.enhancers = enhancers.reverse().map(push(exts)).filter(Boolean);
   }
 
   Folder.prototype.build = function build() {
     var section = this.section,
         metadata = this.metadata,
-        extensions = this.extensions,
+        enhancers = this.enhancers,
         files = this.files;
     var type = section.type,
         scope = section.scope;

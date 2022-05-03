@@ -9,8 +9,8 @@ export default (function (container, opts) {
         scopeProp = _ref.scopeProp,
         relativePath = _ref.relativePath;
 
-    createScopes(scopeProp, container, opts.types, type);
-    var section = buildScope(container, opts.types)(scopeProp);
+    createScopes(scopeProp, container, opts.factories, type);
+    var section = buildScope(container, opts.factories)(scopeProp);
     type.add && type.add(section, relativePath);
   };
 });

@@ -3,7 +3,7 @@ import clean from './clean'
 import container from './container'
 import reload from './reload'
 import { set } from '../../store'
-import { get } from '../../extensions'
+import { get } from '../../enhancers'
 
 const asc = (a,b) => a.length - b.length
 const createContainer = () => ({'/': {}})
@@ -23,7 +23,7 @@ const wrap = (metadataContainer, opts) => {
     },
     config: {
       opts,
-      extensions: get()
+      enhancers: get()
     }
   }
 

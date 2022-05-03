@@ -1,21 +1,21 @@
 const tools = require('./tools')
 const pipeline = require('./pipeline')
-const algorithms = require('./algorithms')
+const factories = require('./factories')
 const store = require('./store')
 const features = require('./features')
-const extensions = require('./extensions')
+const enhancers = require('./enhancers')
 
 const { build, get, prepare, wrap } = features
 
 export default {
   pipeline,
-  algorithms,
+  factories,
   tools,
   build,
   get,
   prepare,
   wrap,
-  extensions,
+  enhancers,
   features,
   store
 }

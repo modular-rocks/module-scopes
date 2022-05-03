@@ -1,11 +1,11 @@
-import { Scope, Logic, Procedural } from '../../../algorithms'
-const algorithms = { Scope, Logic, Procedural }
+import { Scope, Logic, Procedural } from '../../../factories'
+const factories = { Scope, Logic, Procedural }
 
 export default (type) => {
-  const matchable = type.algorithm && algorithms[type.algorithm]
+  const matchable = type.factory && factories[type.factory]
 
   if (matchable) {
-    return algorithms[type.algorithm].reload(type)
+    return factories[type.factory].reload(type)
   }
 
   return type

@@ -1,9 +1,9 @@
 import { wrap, build, inherit } from './index.js'
 import { refine } from '.././rocks'
 import { cut } from '.././scissors'
-import { Scope, Procedural } from '../.././algorithms'
+import { Scope, Procedural } from '../.././factories'
 import { clean } from '../.././tools'
-import { add } from '../.././extensions'
+import { add } from '../.././enhancers'
 const Rocks = { refine }
 const Paper = { wrap, build, inherit }
 const Scissors = { cut }
@@ -86,7 +86,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.two({num: 4})).toEqual(8);
   });
 
-  test("Extensions work", () => {
+  test("Enhancers work", () => {
     opts.dir = dir
     opts.bundler = bundler
     bundler.set('dir', dir)
@@ -110,7 +110,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext.demo).toEqual(12);
   });
 
-  test("Extensions work 2", () => {
+  test("Enhancers work 2", () => {
     opts.dir = dir
     opts.bundler = bundler
     bundler.set('dir', dir)
@@ -134,7 +134,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext2({})).toEqual(33);
   });
 
-  test("Extensions work 3", () => {
+  test("Enhancers work 3", () => {
     opts.dir = dir
     opts.factories = [new Procedural('rocks')]
     opts.bundler = bundler
@@ -157,7 +157,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext2).toEqual(33);
   });
 
-  test("Extensions work 4", () => {
+  test("Enhancers work 4", () => {
     opts.dir = dir
     opts.factories = [new Procedural('rocks')]
     const fn = () => 3
@@ -184,7 +184,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext2({})).toEqual(4);
   });
 
-  test("Extensions work 5 - multiple works 1", () => {
+  test("Enhancers work 5 - multiple works 1", () => {
     opts.dir = dir
     opts.factories = [new Procedural('rocks')]
 
@@ -217,7 +217,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext3({})).toEqual(12);
   });
 
-  test("Deep extensions work", () => {
+  test("Deep enhancers work", () => {
     opts.dir = dir
     opts.factories = [new Procedural('rocks')]
 

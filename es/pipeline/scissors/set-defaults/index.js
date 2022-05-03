@@ -1,6 +1,6 @@
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-import { Scope, Logic, Enhanced } from '../../../algorithms';
+import { Scope, Logic, Procedural } from '../../../factories';
 
 var testForBundler = function testForBundler(opts) {
   if (!opts.bundler || !opts.bundler.resolve || !opts.bundler.load) {
@@ -8,9 +8,9 @@ var testForBundler = function testForBundler(opts) {
   }
 };
 
-var setTypes = function setTypes(opts) {
-  if (opts.types && opts.types.length) return;
-  opts.types = [new Enhanced('rocks')];
+var setFactories = function setFactories(opts) {
+  if (opts.factories && opts.factories.length) return;
+  opts.factories = [new Procedural('rocks')];
 };
 
 var setRegex = function setRegex(opts) {
@@ -18,21 +18,21 @@ var setRegex = function setRegex(opts) {
   opts.regex = /\.jsx?$/;
 };
 
-var convertStrings = function convertStrings(types, type, index) {
+var convertStrings = function convertStrings(factories, type, index) {
   if (typeof type !== 'string') return;
   var _type = void 0;
 
   switch (type[0]) {
     case '+':
       _type = type.replace(/^\+/, '');
-      types[index] = new Logic(_type);
+      factories[index] = new Logic(_type);
       break;
     case '*':
       _type = type.replace(/^\*/, '');
-      types[index] = new Enhanced(_type);
+      factories[index] = new Procedural(_type);
       break;
     default:
-      types[index] = new Scope(type);
+      factories[index] = new Scope(type);
   }
 };
 
@@ -40,10 +40,10 @@ var setIndex = function setIndex(index, type) {
   type.setIndex && type.setIndex(index);
 };
 
-var inherit = function inherit(type, scope) {
+var inherit = function inherit(factory, scope) {
   return function (key) {
-    if (type[key]) return;
-    type[key] = scope[key];
+    if (factory[key]) return;
+    factory[key] = scope[key];
   };
 };
 
@@ -55,7 +55,7 @@ var tidy = function tidy(type) {
   if (inheritedFromFramework) return;
 
   if (!pathname) {
-    throw Error('No pathname set for type, check your config.types');
+    throw Error('No pathname set for type, check your config.factories');
   }
 
   Scope.params.map(inherit(type, new Scope(pathname)));
@@ -65,15 +65,15 @@ export default (function (opts) {
   // opts._dirKeys = {}
   testForBundler(opts);
 
-  setTypes(opts);
+  setFactories(opts);
   setRegex(opts);
 
-  opts.types.map(function (type, index) {
-    convertStrings(opts.types, type, index);
+  opts.factories.map(function (type, index) {
+    convertStrings(opts.factories, type, index);
 
     var isObject = (typeof type === 'undefined' ? 'undefined' : _typeof(type)) == 'object';
-    isObject && !type.inheritedFromFramework && tidy(opts.types[index]);
+    isObject && !type.inheritedFromFramework && tidy(opts.factories[index]);
 
-    setIndex(index, opts.types[index]);
+    setIndex(index, opts.factories[index]);
   });
 });

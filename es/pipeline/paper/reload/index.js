@@ -1,11 +1,11 @@
-import { Scope, Logic, Enhanced } from '../../../algorithms';
-var algorithms = { Scope: Scope, Logic: Logic, Enhanced: Enhanced };
+import { Scope, Logic, Procedural } from '../../../factories';
+var factories = { Scope: Scope, Logic: Logic, Procedural: Procedural };
 
 export default (function (type) {
-  var matchable = type.algorithm && algorithms[type.algorithm];
+  var matchable = type.factory && factories[type.factory];
 
   if (matchable) {
-    return algorithms[type.algorithm].reload(type);
+    return factories[type.factory].reload(type);
   }
 
   return type;

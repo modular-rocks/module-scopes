@@ -18,11 +18,11 @@ var Scope = function Scope(path, env) {
   env.data.enhanced[path] = this.functionality;
   env.data.container[path] = this;
 
-  env.config.opts.types.forEach(function (type) {
+  env.config.opts.factories.forEach(function (type) {
     return new Section(type, _this, env);
   });
 
-  env.config.opts.types.map(function (type) {
+  env.config.opts.factories.map(function (type) {
     var section = _this.sections[type.pathname];
     var root = section.build();
     if (root) {

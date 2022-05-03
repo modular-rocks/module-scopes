@@ -3,9 +3,9 @@ var keys = function keys(obj) {
 };
 
 var refine = function refine(container, _ref) {
-  var types = _ref.types;
+  var factories = _ref.factories;
 
-  types.map(function (type) {
+  factories.map(function (type) {
     keys(container).forEach(function (scopePath) {
       var scope = container[scopePath];
       var section = scope[type.index];

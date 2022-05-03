@@ -1,7 +1,7 @@
-export default (function (container, types) {
+export default (function (container, factories) {
   return function (folder) {
     if (!container[folder]) {
-      container[folder] = types.map(function (matched) {
+      container[folder] = factories.map(function (matched) {
         return matched.build();
       });
     }

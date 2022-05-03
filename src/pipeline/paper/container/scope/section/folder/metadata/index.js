@@ -8,7 +8,7 @@ export default (relativeFolderPath, section, env) => {
   const { root } = env.config.opts
 
   const action = relPathPieces.slice(-1)[0]
-  const [name, ...extensions] = splitName(action)
+  const [name, ...enhancers] = splitName(action)
 
   const scope = section.scope
   const relativePath = createPath(scope.path, relativeFolderPath, section.type)
@@ -24,7 +24,7 @@ export default (relativeFolderPath, section, env) => {
   return {
     action,
     name,
-    extensions,
+    enhancers,
     relativeFolderPath,
     relativePath,
     absolutePath,

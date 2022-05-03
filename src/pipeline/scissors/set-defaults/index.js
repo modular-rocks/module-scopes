@@ -1,4 +1,4 @@
-import { Scope, Logic, Procedural } from '../../../algorithms'
+import { Scope, Logic, Procedural } from '../../../factories'
 
 const testForBundler = (opts) => {
   if (!opts.bundler || !opts.bundler.resolve || !opts.bundler.load) {
@@ -6,7 +6,7 @@ const testForBundler = (opts) => {
   }
 }
 
-const setTypes = (opts) => {
+const setFactories = (opts) => {
   if (opts.factories && opts.factories.length) return
   opts.factories = [ new Procedural('rocks')]
 }
@@ -38,9 +38,9 @@ const setIndex = (index, type) => {
   type.setIndex && type.setIndex(index)
 }
 
-const inherit = (type, scope) => (key) => {
-  if (type[key]) return
-  type[key] = scope[key]
+const inherit = (factory, scope) => (key) => {
+  if (factory[key]) return
+  factory[key] = scope[key]
 }
 
 const tidy = (type) => {
@@ -59,7 +59,7 @@ export default (opts) => {
   // opts._dirKeys = {}
   testForBundler(opts)
 
-  setTypes(opts)
+  setFactories(opts)
   setRegex(opts)
 
   opts.factories.map((type, index) => {

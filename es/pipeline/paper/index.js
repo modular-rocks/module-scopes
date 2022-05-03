@@ -3,7 +3,7 @@ import clean from './clean';
 import container from './container';
 import reload from './reload';
 import { set } from '../../store';
-import { get } from '../../extensions';
+import { get } from '../../enhancers';
 
 var asc = function asc(a, b) {
   return a.length - b.length;
@@ -13,7 +13,7 @@ var createContainer = function createContainer() {
 };
 
 var wrap = function wrap(metadataContainer, opts) {
-  opts.types = opts.types.map(reload);
+  opts.factories = opts.factories.map(reload);
   var scopes = createContainer();
   var enhancedContainer = createContainer();
 
@@ -27,7 +27,7 @@ var wrap = function wrap(metadataContainer, opts) {
     },
     config: {
       opts: opts,
-      extensions: get()
+      enhancers: get()
     }
   };
 
