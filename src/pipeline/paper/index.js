@@ -9,7 +9,7 @@ const asc = (a,b) => a.length - b.length
 const createContainer = () => ({'/': {}})
 
 const wrap = (metadataContainer, opts) => {
-  opts.types = opts.types.map(reload)
+  opts.factories = opts.factories.map(reload)
   let scopes = createContainer()
   let enhancedContainer = createContainer()
 

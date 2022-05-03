@@ -1,6 +1,6 @@
-export default (container, types) => (folder) => {
+export default (container, factories) => (folder) => {
   if (!container[folder]) {
-    container[folder] = types.map((matched) => matched.build())
+    container[folder] = factories.map((matched) => matched.build())
   }
   return container[folder]
 }

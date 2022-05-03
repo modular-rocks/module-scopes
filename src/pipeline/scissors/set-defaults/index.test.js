@@ -6,63 +6,63 @@ describe("ModularRocks SetDefaults", () => {
 
     setDefaults(opts)
 
-    expect(opts.types.length).toEqual(1);
-    expect(opts.types[0].algorithm).toEqual('Enhanced');
-    expect(opts.types[0].pathname).toEqual('rocks');
+    expect(opts.factories.length).toEqual(1);
+    expect(opts.factories[0].algorithm).toEqual('Procedural');
+    expect(opts.factories[0].pathname).toEqual('rocks');
   });
 
   test("b", () => {
     const opts = {
-      types: []
+      factories: []
     }
 
     setDefaults(opts)
 
-    expect(opts.types.length).toEqual(1);
-    expect(opts.types[0].algorithm).toEqual('Enhanced');
-    expect(opts.types[0].pathname).toEqual('rocks');
+    expect(opts.factories.length).toEqual(1);
+    expect(opts.factories[0].algorithm).toEqual('Procedural');
+    expect(opts.factories[0].pathname).toEqual('rocks');
   });
 
   test("c", () => {
     const opts = {
-      types: ['data']
+      factories: ['data']
     }
 
     setDefaults(opts)
 
-    expect(opts.types.length).toEqual(1);
-    expect(opts.types[0].algorithm).toEqual('Scope');
-    expect(opts.types[0].pathname).toEqual('data');
+    expect(opts.factories.length).toEqual(1);
+    expect(opts.factories[0].algorithm).toEqual('Scope');
+    expect(opts.factories[0].pathname).toEqual('data');
   });
 
   test("cc", () => {
     const opts = {
-      types: ['+data']
+      factories: ['+data']
     }
 
     setDefaults(opts)
 
-    expect(opts.types.length).toEqual(1);
-    expect(opts.types[0].pathname).toEqual('data');
-    expect(opts.types[0].algorithm).toEqual('Logic');
+    expect(opts.factories.length).toEqual(1);
+    expect(opts.factories[0].pathname).toEqual('data');
+    expect(opts.factories[0].algorithm).toEqual('Logic');
   });
 
   test("ccc", () => {
     const opts = {
-      types: ['*data']
+      factories: ['*data']
     }
 
     setDefaults(opts)
 
-    expect(opts.types.length).toEqual(1);
-    expect(opts.types[0].pathname).toEqual('data');
-    expect(opts.types[0].algorithm).toEqual('Enhanced');
+    expect(opts.factories.length).toEqual(1);
+    expect(opts.factories[0].pathname).toEqual('data');
+    expect(opts.factories[0].algorithm).toEqual('Procedural');
   });
 
 
   test("d", () => {
     const opts = {
-      types: [{attr: 'data'}]
+      factories: [{attr: 'data'}]
     }
 
     const t = () => {
@@ -73,34 +73,34 @@ describe("ModularRocks SetDefaults", () => {
 
   test("e", () => {
     const opts = {
-      types: ['pages', {pathname: 'components'}, {pathname: 'rocks'}]
+      factories: ['pages', {pathname: 'components'}, {pathname: 'rocks'}]
     }
 
     setDefaults(opts)
 
-    expect(opts.types[0].algorithm).toEqual('Scope');
-    expect(opts.types[1].algorithm).toEqual(undefined);
-    expect(opts.types[2].algorithm).toEqual(undefined);
+    expect(opts.factories[0].algorithm).toEqual('Scope');
+    expect(opts.factories[1].algorithm).toEqual(undefined);
+    expect(opts.factories[2].algorithm).toEqual(undefined);
   });
 
 
   test("f", () => {
     const opts = {
-      types: [{pathname: 'data', algorithm: 'Enhanced'}]
+      factories: [{pathname: 'data', algorithm: 'Procedural'}]
     }
 
     setDefaults(opts)
 
-    expect(opts.types[0].algorithm).toEqual('Enhanced');
+    expect(opts.factories[0].algorithm).toEqual('Procedural');
   });
 
   test("g", () => {
     const opts = {
-      types: [{pathname: 'data', algorithm: 'Rock'}]
+      factories: [{pathname: 'data', algorithm: 'Rock'}]
     }
 
     setDefaults(opts)
 
-    expect(opts.types[0].algorithm).toEqual('Rock');
+    expect(opts.factories[0].algorithm).toEqual('Rock');
   });
 });

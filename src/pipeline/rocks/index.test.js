@@ -9,7 +9,7 @@ type1.index = 0
 
 const config = {
   regex: /\.js?$/,
-  types: [
+  factories: [
     type1
   ]
 }

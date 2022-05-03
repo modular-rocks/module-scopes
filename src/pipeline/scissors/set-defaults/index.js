@@ -1,4 +1,4 @@
-import { Scope, Logic, Enhanced } from '../../../algorithms'
+import { Scope, Logic, Procedural } from '../../../algorithms'
 
 const testForBundler = (opts) => {
   if (!opts.bundler || !opts.bundler.resolve || !opts.bundler.load) {
@@ -7,8 +7,8 @@ const testForBundler = (opts) => {
 }
 
 const setTypes = (opts) => {
-  if (opts.types && opts.types.length) return
-  opts.types = [ new Enhanced('rocks')]
+  if (opts.factories && opts.factories.length) return
+  opts.factories = [ new Procedural('rocks')]
 }
 
 const setRegex = (opts) => {
@@ -16,21 +16,21 @@ const setRegex = (opts) => {
   opts.regex = /\.jsx?$/
 }
 
-const convertStrings = (types, type, index) => {
+const convertStrings = (factories, type, index) => {
   if (typeof type !== 'string') return
   let _type
 
   switch(type[0]) {
     case '+':
       _type = type.replace(/^\+/, '')
-      types[index] = new Logic(_type)
+      factories[index] = new Logic(_type)
       break;
     case '*':
       _type = type.replace(/^\*/, '')
-      types[index] = new Enhanced(_type)
+      factories[index] = new Procedural(_type)
       break;
     default:
-      types[index] = new Scope(type)
+      factories[index] = new Scope(type)
   }
 }
 
@@ -49,7 +49,7 @@ const tidy = (type) => {
   if (inheritedFromFramework) return
 
   if (!pathname) {
-    throw Error('No pathname set for type, check your config.types')
+    throw Error('No pathname set for type, check your config.factories')
   }
 
   Scope.params.map(inherit(type, new Scope(pathname)))
@@ -62,12 +62,12 @@ export default (opts) => {
   setTypes(opts)
   setRegex(opts)
 
-  opts.types.map((type, index) => {
-    convertStrings(opts.types, type, index)
+  opts.factories.map((type, index) => {
+    convertStrings(opts.factories, type, index)
 
     const isObject = typeof type == 'object'
-    isObject && !type.inheritedFromFramework && tidy(opts.types[index])
+    isObject && !type.inheritedFromFramework && tidy(opts.factories[index])
 
-    setIndex(index, opts.types[index])
+    setIndex(index, opts.factories[index])
   })
 }

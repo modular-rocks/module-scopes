@@ -1,3 +1,3 @@
-export default function() {
-  return 4
+export default function({num}) {
+  return num * num
 }

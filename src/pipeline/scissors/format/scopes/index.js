@@ -14,8 +14,8 @@ const createScopes = (createScope, current) => {
   }
 }
 
-export default (relative, container, types, matched) => {
-  const createScope = buildScope(container, types)
+export default (relative, container, factories, matched) => {
+  const createScope = buildScope(container, factories)
   createScopes(createScope, rejectUndefined(splitPath(relative)))
   createScope('/')
   return

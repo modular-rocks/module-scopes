@@ -1,5 +1,5 @@
 import reload from './index.js'
-import { Scope, Logic, Enhanced } from '../../../algorithms'
+import { Scope, Logic, Procedural } from '../../../algorithms'
 
 describe("Paper reload", () => {
   test("reload", () => {
@@ -18,8 +18,8 @@ describe("Paper reload", () => {
   });
 
   test("reload", () => {
-    const type = {algorithm: 'Enhanced'}
-    expect(reload(type).constructor).toEqual(Enhanced);
+    const type = {algorithm: 'Procedural'}
+    expect(reload(type).constructor).toEqual(Procedural);
   });
 
   test("reload", () => {

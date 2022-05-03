@@ -1,5 +1,5 @@
-import { Scope, Logic, Enhanced } from '../../../algorithms'
-const algorithms = { Scope, Logic, Enhanced }
+import { Scope, Logic, Procedural } from '../../../algorithms'
+const algorithms = { Scope, Logic, Procedural }
 
 export default (type) => {
   const matchable = type.algorithm && algorithms[type.algorithm]

@@ -5,7 +5,7 @@ describe("ModularRocks Generate match", () => {
   test("match works without split opts", () => {
     const folder = 'root/lib/pages/files/filename'
     const type1 = { pathname: 'pages' }
-    const opts = {types: [ type1 ] }
+    const opts = {factories: [ type1 ] }
 
     const example = match(folder, opts)
     const expected = type1
@@ -18,7 +18,7 @@ describe("ModularRocks Generate match", () => {
     const type1 = { pathname: 'pages'}
     const type2 = { pathname: 'rocks'}
 
-    const opts = {types: [ type1, type2 ] }
+    const opts = {factories: [ type1, type2 ] }
 
     const example = match(folder, opts)
     const expected = type1
@@ -31,17 +31,17 @@ describe("ModularRocks Generate match", () => {
     const type1 = { pathname: 'pages'}
     const type2 = { pathname: 'rocks'}
 
-    const opts = {types: [ type1, type2 ] }
+    const opts = {factories: [ type1, type2 ] }
 
     const example = match(folder, opts)
     const expected = type2
     expect(example).toEqual(expected);
   });
 
-  test("match works with split opts on pages without types", () => {
+  test("match works with split opts on pages without factories", () => {
     const folder = 'root/lib/pages/files/filename'
 
-    const opts = {types: [ ] }
+    const opts = {factories: [ ] }
 
     const example = match(folder, opts)
     const expected = undefined
@@ -54,7 +54,7 @@ describe("ModularRocks Generate match", () => {
     const type1 = { pathname: 'pages'}
     const type2 = { pathname: 'rocks'}
 
-    const opts = {types: [ type1, type2 ] }
+    const opts = {factories: [ type1, type2 ] }
 
     const example = match(folder, opts)
     const expected = undefined

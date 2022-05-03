@@ -1,7 +1,7 @@
 import Scope from './scope'
 import Logic from './logic'
-import Enhanced from './enhanced'
+import Procedural from './procedural'
 
 export {
-  Scope, Logic, Enhanced
+  Scope, Logic, Procedural
 }

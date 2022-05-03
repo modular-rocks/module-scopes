@@ -13,9 +13,9 @@ export default class Scope {
     env.data.enhanced[path] = this.functionality
     env.data.container[path] = this
 
-    env.config.opts.types.forEach((type) => new Section(type, this, env))
+    env.config.opts.factories.forEach((type) => new Section(type, this, env))
 
-    env.config.opts.types.map((type) => {
+    env.config.opts.factories.map((type) => {
       const section = this.sections[type.pathname]
       const root = section.build()
       if (root) {

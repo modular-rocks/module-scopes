@@ -1,7 +1,7 @@
 import { wrap, build, inherit } from './index.js'
 import { refine } from '.././rocks'
 import { cut } from '.././scissors'
-import { Scope, Enhanced } from '../.././algorithms'
+import { Scope, Procedural } from '../.././algorithms'
 import { clean } from '../.././tools'
 import { add } from '../.././extensions'
 const Rocks = { refine }
@@ -48,7 +48,7 @@ describe("ModularRocks paper wrap", () => {
 
   test("Test basic scope", () => {
     opts.dir = dir
-    opts.types = [new Scope('rocks')]
+    opts.factories = [new Scope('rocks')]
     opts.bundler = bundler
     bundler.set('dir', dir)
     bundler.set('keys', dir.keys())
@@ -67,7 +67,7 @@ describe("ModularRocks paper wrap", () => {
 
   test("Test basic scope - shallow nested", () => {
     opts.dir = dir
-    opts.types = [new Scope('rocks'), new Scope('components')]
+    opts.factories = [new Scope('rocks'), new Scope('components')]
     opts.bundler = bundler
     bundler.set('dir', dir)
     bundler.set('keys', dir.keys())
@@ -92,7 +92,7 @@ describe("ModularRocks paper wrap", () => {
     bundler.set('dir', dir)
     bundler.set('keys', dir.keys())
 
-    opts.types = [new Scope('rocks')]
+    opts.factories = [new Scope('rocks')]
 
     const ex = (fn, env) => {
       return fn * 2
@@ -116,7 +116,7 @@ describe("ModularRocks paper wrap", () => {
     bundler.set('dir', dir)
     bundler.set('keys', dir.keys())
 
-    opts.types = [new Enhanced('rocks')]
+    opts.factories = [new Procedural('rocks')]
 
     const ex = (env) => {
       return (action) => 33
@@ -136,7 +136,7 @@ describe("ModularRocks paper wrap", () => {
 
   test("Extensions work 3", () => {
     opts.dir = dir
-    opts.types = [new Enhanced('rocks')]
+    opts.factories = [new Procedural('rocks')]
     opts.bundler = bundler
     bundler.set('dir', dir)
     bundler.set('keys', dir.keys())
@@ -159,7 +159,7 @@ describe("ModularRocks paper wrap", () => {
 
   test("Extensions work 4", () => {
     opts.dir = dir
-    opts.types = [new Enhanced('rocks')]
+    opts.factories = [new Procedural('rocks')]
     const fn = () => 3
 
     const ex = (fn, env) => {
@@ -186,7 +186,7 @@ describe("ModularRocks paper wrap", () => {
 
   test("Extensions work 5 - multiple works 1", () => {
     opts.dir = dir
-    opts.types = [new Enhanced('rocks')]
+    opts.factories = [new Procedural('rocks')]
 
     const one = (fn, env) => {
       env.number = env.number * 3
@@ -219,7 +219,7 @@ describe("ModularRocks paper wrap", () => {
 
   test("Deep extensions work", () => {
     opts.dir = dir
-    opts.types = [new Enhanced('rocks')]
+    opts.factories = [new Procedural('rocks')]
 
     opts.bundler = bundler
     bundler.set('dir', dir)

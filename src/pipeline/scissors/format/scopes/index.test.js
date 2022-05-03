@@ -6,7 +6,7 @@ describe("ModularRocks Format scopes", () => {
     const scope = {}
     const relative = '/root/dir/grand/parent/child'
     const type1 = { build: () => { return {} }   }
-    const types = [
+    const factories = [
       {
         build: () => { return {} }
       },
@@ -15,7 +15,7 @@ describe("ModularRocks Format scopes", () => {
       },
     ]
 
-    lib(relative, scope, types, [type1])
+    lib(relative, scope, factories, [type1])
 
     const example = Object.keys(scope)
     const expected = ['/root/dir/grand/parent/child/', '/root/dir/grand/parent/', '/root/dir/grand/', '/root/dir/', '/root/', '//', '/']

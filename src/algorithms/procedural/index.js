@@ -5,10 +5,10 @@ import { path2Pieces, pieces2Path, last, uniq } from '../../tools'
 
 const isFunc = (fn) => typeof fn === 'function'
 
-class Enhanced extends Logic {
+class Procedural extends Logic {
   constructor(pathname) {
     super(pathname)
-    this.algorithm = 'Enhanced'
+    this.algorithm = 'Procedural'
   }
 
   run(env) {
@@ -32,4 +32,4 @@ class Enhanced extends Logic {
 }
 
 
-export default Enhanced
+export default Procedural

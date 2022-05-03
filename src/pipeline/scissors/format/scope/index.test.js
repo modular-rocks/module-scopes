@@ -5,7 +5,7 @@ describe("ModularRocks Format scope", () => {
 
     const scope = {}
     const folder = '/dir'
-    const types = [
+    const factories = [
       {
         pathname: 'rocks',
         build: () => { return {} }
@@ -16,7 +16,7 @@ describe("ModularRocks Format scope", () => {
       },
     ]
 
-    const example = lib(scope, types)(folder)
+    const example = lib(scope, factories)(folder)
     const expected = [{}, []]
 
     expect(example).toEqual(expected);
@@ -26,7 +26,7 @@ describe("ModularRocks Format scope", () => {
 
     const scope = {}
     const folder = '/dir'
-    const types = [
+    const factories = [
       {
         pathname: 'rocks',
         build: () => { return {} }
@@ -37,7 +37,7 @@ describe("ModularRocks Format scope", () => {
       },
     ]
 
-    lib(scope, types)(folder)
+    lib(scope, factories)(folder)
 
     const example = Object.keys(scope)
     const expected = ['/dir']

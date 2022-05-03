@@ -20,13 +20,16 @@ var setRegex = function setRegex(opts) {
 
 var convertStrings = function convertStrings(types, type, index) {
   if (typeof type !== 'string') return;
+  var _type = void 0;
 
   switch (type[0]) {
     case '+':
-      types[index] = new Logic(type);
+      _type = type.replace(/^\+/, '');
+      types[index] = new Logic(_type);
       break;
     case '*':
-      types[index] = new Enhanced(type);
+      _type = type.replace(/^\*/, '');
+      types[index] = new Enhanced(_type);
       break;
     default:
       types[index] = new Scope(type);

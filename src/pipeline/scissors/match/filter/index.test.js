@@ -7,9 +7,9 @@ describe("ModularRocks Generate match filter", () => {
 
     const type1 = {pathname: 'pages'}
 
-    const types = [ type1 ]
+    const factories = [ type1 ]
 
-    const example = filter(pieces, types)
+    const example = filter(pieces, factories)
 
     const expected = [type1]
 
