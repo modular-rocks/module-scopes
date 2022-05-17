@@ -19,8 +19,8 @@ const createFolder = (parent, name, obj) => parent[name] ? null : parent[name] =
 
 const splitName = (action) => action ? action.split('.') : []
 
-const createPath = (scopePath, relativeFolderPath, type) => {
-  const paths = [scopePath, type.pathname, relativeFolderPath]
+const createPath = (scopePath, relativeFolderPath, factory) => {
+  const paths = [scopePath, factory.pathname, relativeFolderPath]
   return `/${pieces2Path(path2Pieces(pieces2Path(paths)))}/`
 }
 

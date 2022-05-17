@@ -59,8 +59,8 @@ var splitName = function splitName(action) {
   return action ? action.split('.') : [];
 };
 
-var createPath = function createPath(scopePath, relativeFolderPath, type) {
-  var paths = [scopePath, type.pathname, relativeFolderPath];
+var createPath = function createPath(scopePath, relativeFolderPath, factory) {
+  var paths = [scopePath, factory.pathname, relativeFolderPath];
   return '/' + pieces2Path(path2Pieces(pieces2Path(paths))) + '/';
 };
 

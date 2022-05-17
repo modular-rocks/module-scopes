@@ -62,7 +62,7 @@ var Folder = function () {
         metadata = this.metadata,
         enhancers = this.enhancers,
         files = this.files;
-    var type = section.type,
+    var factory = section.factory,
         scope = section.scope;
     var _env = this.env,
         data = _env.data,
@@ -82,7 +82,7 @@ var Folder = function () {
       prop: name,
       data: {
         section: section,
-        type: type,
+        factory: factory,
         scope: scope,
         folder: this
       },
@@ -95,12 +95,12 @@ var Folder = function () {
 
     bind.call(this, metadata, env);
 
-    var enhanced = folder(type.run.bind(type), env);
+    var enhanced = folder(factory.run.bind(factory), env);
 
     attach(name, enhanced, env);
     add(enhanced, children);
 
-    env.fn = enhanced;
+    env.module = enhanced;
 
     return env.scope;
   };

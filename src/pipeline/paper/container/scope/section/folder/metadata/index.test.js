@@ -4,8 +4,8 @@ describe("Paper metadata", () => {
   test("without enhancers", () => {
     const relativeFolderPath = '/one/two/three/four/'
     const scope = { path: '/path/' }
-    const type = { pathname: 'rocks' }
-    const section = { scope, type }
+    const factory = { pathname: 'rocks' }
+    const section = { scope, factory }
     const env = { config: { opts: { root: '/zero/' } } }
 
     const example = metadata(relativeFolderPath, section, env)
@@ -30,8 +30,8 @@ describe("Paper metadata", () => {
   test("with enhancers", () => {
     const relativeFolderPath = '/one/two/three/four.ext1.ext2/'
     const scope = { path: '/path/' }
-    const type = { pathname: 'rocks' }
-    const section = { scope, type }
+    const factory = { pathname: 'rocks' }
+    const section = { scope, factory }
     const env = { config: { opts: { root: '/zero/' } } }
 
     const example = metadata(relativeFolderPath, section, env)

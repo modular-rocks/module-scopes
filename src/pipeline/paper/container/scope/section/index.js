@@ -4,16 +4,16 @@ import collectRemaining from './collect-remaining'
 const deepest = (a, b) => b.metadata.depth - a.metadata.depth
 
 export default class Section {
-  constructor(type, scope, env) {
-    this.type = type
+  constructor(factory, scope, env) {
+    this.factory = factory
     this.scope = scope
     this.env = env
-    this.metadata = scope.metadata[type.index]
+    this.metadata = scope.metadata[factory.index]
     this.folders = {}
     this.pipes = {}
     this.functions = {}
     this.children = {}
-    scope.sections[type.pathname] = this
+    scope.sections[factory.pathname] = this
 
     const folders = Object.keys(this.metadata)
     this.folderObjects = folders.map((relPath) => new Folder(relPath, this, env))

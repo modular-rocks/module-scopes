@@ -6,6 +6,7 @@ export default (function (env) {
     var scope = new Scope(scopePath, env);
     var enhanced = env.data.enhanced;
 
+    scope.build(env);
     inherit(scopePath, enhanced);
   };
 });

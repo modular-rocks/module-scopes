@@ -17,7 +17,7 @@ export default (function (relativeFolderPath, section, env) {
       enhancers = _splitName.slice(1);
 
   var scope = section.scope;
-  var relativePath = createPath(scope.path, relativeFolderPath, section.type);
+  var relativePath = createPath(scope.path, relativeFolderPath, section.factory);
   var absolutePath = relativePath;
 
   if (root && !absolutePath.match(root)) {

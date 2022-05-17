@@ -11,7 +11,7 @@ export default (relativeFolderPath, section, env) => {
   const [name, ...enhancers] = splitName(action)
 
   const scope = section.scope
-  const relativePath = createPath(scope.path, relativeFolderPath, section.type)
+  const relativePath = createPath(scope.path, relativeFolderPath, section.factory)
   let absolutePath = relativePath
 
   if (root && !absolutePath.match(root)) {

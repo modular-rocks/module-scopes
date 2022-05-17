@@ -51,7 +51,7 @@ export default class Folder {
 
   build() {
     const { section, metadata, enhancers, files } = this
-    const { type, scope } = section
+    const { factory, scope } = section
     const { data, config } = this.env
 
     let { children, childStorage, name } = create(section, this)
@@ -65,7 +65,7 @@ export default class Folder {
       prop: name,
       data: {
         section,
-        type,
+        factory,
         scope,
         folder: this,
       },
@@ -78,12 +78,12 @@ export default class Folder {
 
     bind.call(this, metadata, env)
 
-    const enhanced = folder(type.run.bind(type), env)
+    const enhanced = folder(factory.run.bind(factory), env)
 
     attach(name, enhanced, env)
     add(enhanced, children)
 
-    env.fn = enhanced
+    env.module = enhanced
 
     return env.scope
   }

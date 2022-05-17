@@ -8,20 +8,20 @@ var deepest = function deepest(a, b) {
 };
 
 var Section = function () {
-  function Section(type, scope, env) {
+  function Section(factory, scope, env) {
     var _this = this;
 
     _classCallCheck(this, Section);
 
-    this.type = type;
+    this.factory = factory;
     this.scope = scope;
     this.env = env;
-    this.metadata = scope.metadata[type.index];
+    this.metadata = scope.metadata[factory.index];
     this.folders = {};
     this.pipes = {};
     this.functions = {};
     this.children = {};
-    scope.sections[type.pathname] = this;
+    scope.sections[factory.pathname] = this;
 
     var folders = Object.keys(this.metadata);
     this.folderObjects = folders.map(function (relPath) {
