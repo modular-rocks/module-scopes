@@ -1,6 +1,6 @@
 {
   "name": "@modular-rocks/core",
-  "version": "0.1.7-development",
+  "version": "0.2.0-development",
   "description": "Files and folders to logic",
   "browser": "lib/index.js",
   "main": "lib/index.js",

@@ -7,8 +7,7 @@ const get = (path, attr, quiet) => {
   }
 
   if (!section && !quiet) {
-    console.warn(`Path supplied not found: ${path}`)
-    console.warn('Defaulting to first path supplied')
+    console.warn(`Path supplied not found, defaulting to another path. Please visit http://docs.modular.rocks/docs/errors for more info. Path received: ${path}.`)
   }
 
   const [first] = Object.keys(store)
