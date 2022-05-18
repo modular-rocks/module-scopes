@@ -8,12 +8,12 @@ describe("ModularRocks unpack extract", () => {
 
   test("ModularRocks unpack extract 2", () => {
     const obj = extract('1.setup.redux.js')
-    expect(obj.fileEnhancer).toEqual('js');
+    expect(obj.fileDecorator).toEqual('js');
   });
 
   test("ModularRocks unpack extract 2", () => {
     const obj = extract('1.setup.redux.js')
-    expect(obj.enhancers).toEqual(['redux']);
+    expect(obj.decorators).toEqual(['redux']);
   });
 
   test("ModularRocks unpack extract 3", () => {
@@ -33,6 +33,6 @@ describe("ModularRocks unpack extract", () => {
 
   test("ModularRocks unpack extract 6", () => {
     const obj = extract('setup.redux.js')
-    expect(obj.enhancers).toEqual(['redux']);
+    expect(obj.decorators).toEqual(['redux']);
   });
 });

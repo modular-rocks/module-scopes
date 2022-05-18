@@ -3,7 +3,7 @@ var pipeline = require('./pipeline');
 var factories = require('./factories');
 var store = require('./store');
 var features = require('./features');
-var enhancers = require('./enhancers');
+var decorators = require('./decorators');
 
 var build = features.build,
     get = features.get,
@@ -19,7 +19,7 @@ export default {
   get: get,
   prepare: prepare,
   wrap: wrap,
-  enhancers: enhancers,
+  decorators: decorators,
   features: features,
   store: store
 };

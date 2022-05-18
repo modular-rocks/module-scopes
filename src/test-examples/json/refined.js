@@ -4,24 +4,24 @@ export default {
         '/ext/': [
           {
             name: 'demo',
-            fileEnhancer: 'js',
-            enhancers: ['yo'],
+            fileDecorator: 'js',
+            decorators: ['yo'],
             filename: 'demo.yo.js'
           }
         ],
         '/ext2.also/': [
           {
             name: 'demo',
-            fileEnhancer: 'js',
-            enhancers: ['yo'],
+            fileDecorator: 'js',
+            decorators: ['yo'],
             filename: 'demo.yo.js'
           }
         ],
         '/ext3.one.two/': [
           {
             name: 'demo',
-            fileEnhancer: 'js',
-            enhancers: ['yo'],
+            fileDecorator: 'js',
+            decorators: ['yo'],
             filename: 'demo.yo.js'
           }
         ],
@@ -29,34 +29,34 @@ export default {
           {
             num: '1',
             name: 'first-example',
-            fileEnhancer: 'js',
+            fileDecorator: 'js',
             filename: '1.first-example.js'
           },
           {
             num: '2',
             name: 'second-example',
-            fileEnhancer: 'js',
+            fileDecorator: 'js',
             filename: '2.second-example.js'
           },
           {
             num: '3',
             name: 'third-example',
-            fileEnhancer: 'js',
+            fileDecorator: 'js',
             filename: '3.third-example.js'
           },
-          { name: 'number', fileEnhancer: 'js', filename: 'number.js' }
+          { name: 'number', fileDecorator: 'js', filename: 'number.js' }
         ],
         '/first/second/third/': [
           {
             name: 'times-by-ten',
-            fileEnhancer: 'js',
+            fileDecorator: 'js',
             filename: 'times-by-ten.js'
           }
         ],
         '/first/second/': [
           {
             name: 'times-by-ten',
-            fileEnhancer: 'js',
+            fileDecorator: 'js',
             filename: 'times-by-ten.js'
           }
         ]

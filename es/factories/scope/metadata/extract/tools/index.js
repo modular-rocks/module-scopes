@@ -1,7 +1,7 @@
 var hasNumber = function hasNumber(pieces) {
   return !isNaN(pieces[0]);
 };
-var hasEnhancers = function hasEnhancers(object, pieces) {
+var hasDecorators = function hasDecorators(object, pieces) {
   return pieces.length > 0;
 };
 var setNumber = function setNumber(object, pieces) {
@@ -16,14 +16,14 @@ var setName = function setName(object, pieces) {
   pieces.splice(0, 1);
 };
 
-var setFileEnhancer = function setFileEnhancer(object, pieces) {
-  object.fileEnhancer = pieces.slice(-1)[0];
+var setFileDecorator = function setFileDecorator(object, pieces) {
+  object.fileDecorator = pieces.slice(-1)[0];
   pieces.splice(-1, 1);
-  if (hasEnhancers(object, pieces)) return setEnhancers(object, pieces);
+  if (hasDecorators(object, pieces)) return setDecorators(object, pieces);
 };
 
-var setEnhancers = function setEnhancers(object, pieces) {
-  object.enhancers = pieces.reverse();
+var setDecorators = function setDecorators(object, pieces) {
+  object.decorators = pieces.reverse();
 };
 
-export { hasNumber, hasEnhancers, setNumber, setName, setFileEnhancer, setEnhancers };
+export { hasNumber, hasDecorators, setNumber, setName, setFileDecorator, setDecorators };

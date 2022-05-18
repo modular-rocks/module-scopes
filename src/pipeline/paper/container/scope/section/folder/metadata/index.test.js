@@ -1,7 +1,7 @@
 import metadata from './index.js'
 
 describe("Paper metadata", () => {
-  test("without enhancers", () => {
+  test("without decorators", () => {
     const relativeFolderPath = '/one/two/three/four/'
     const scope = { path: '/path/' }
     const factory = { pathname: 'rocks' }
@@ -13,7 +13,7 @@ describe("Paper metadata", () => {
     const expected = {
       action: 'four',
       name: 'four',
-      enhancers: [],
+      decorators: [],
       relativeFolderPath: '/one/two/three/four/',
       relativePath: '/path/rocks/one/two/three/four/',
       absolutePath: '/zero/path/rocks/one/two/three/four/',
@@ -27,7 +27,7 @@ describe("Paper metadata", () => {
   });
 
 
-  test("with enhancers", () => {
+  test("with decorators", () => {
     const relativeFolderPath = '/one/two/three/four.ext1.ext2/'
     const scope = { path: '/path/' }
     const factory = { pathname: 'rocks' }
@@ -39,7 +39,7 @@ describe("Paper metadata", () => {
     const expected = {
       action: 'four.ext1.ext2',
       name: 'four',
-      enhancers: ['ext1', 'ext2'],
+      decorators: ['ext1', 'ext2'],
       relativeFolderPath: '/one/two/three/four.ext1.ext2/',
       relativePath: '/path/rocks/one/two/three/four.ext1.ext2/',
       absolutePath: '/zero/path/rocks/one/two/three/four.ext1.ext2/',

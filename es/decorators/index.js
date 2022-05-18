@@ -1,10 +1,10 @@
-var enhancers = {};
+var decorators = {};
 
 var add = function add(key, fn) {
-  return enhancers[key] = fn;
+  return decorators[key] = fn;
 };
 var get = function get() {
-  return enhancers;
+  return decorators;
 };
 
 export { add, get };

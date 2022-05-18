@@ -1,5 +1,5 @@
 import extend from './index.js'
-import { add, get } from '../../../../../../../../enhancers'
+import { add, get } from '../../../../../../../../decorators'
 
 describe("ModularRocks paper prep extend config configure", () => {
   test("file works with extension", () => {
@@ -16,11 +16,11 @@ describe("ModularRocks paper prep extend config configure", () => {
       files: [
         {
           name: 'hello',
-          enhancers: ['cool']
+          decorators: ['cool']
         }
       ],
       config: {
-        enhancers: get()
+        decorators: get()
       }
     }
 
@@ -39,11 +39,11 @@ describe("ModularRocks paper prep extend config configure", () => {
       files: [
         {
           name: 'hello',
-          enhancers: ['fake']
+          decorators: ['fake']
         }
       ],
       config: {
-        enhancers: get()
+        decorators: get()
       }
     }
 
@@ -64,7 +64,7 @@ describe("ModularRocks paper prep extend config configure", () => {
         }
       ],
       config: {
-        enhancers: get()
+        decorators: get()
       }
     }
 
@@ -72,7 +72,7 @@ describe("ModularRocks paper prep extend config configure", () => {
     expect(example).toEqual(fn);
   });
 
-  test("multiple enhancers work", () => {
+  test("multiple decorators work", () => {
     let number = 2
     const fn = () => 3
 
@@ -97,11 +97,11 @@ describe("ModularRocks paper prep extend config configure", () => {
       files: [
         {
           name: 'hello',
-          enhancers: ['cool', 'calm']
+          decorators: ['cool', 'calm']
         }
       ],
       config: {
-        enhancers: get()
+        decorators: get()
       }
     }
 
@@ -109,7 +109,7 @@ describe("ModularRocks paper prep extend config configure", () => {
     expect(example()).toEqual(8);
   });
 
-  test("multiple enhancers work 2", () => {
+  test("multiple decorators work 2", () => {
     const fn = (action) => action.number
 
     const ext = (fn, env) => {
@@ -137,11 +137,11 @@ describe("ModularRocks paper prep extend config configure", () => {
       files: [
         {
           name: 'hello',
-          enhancers: ['cool', 'calm']
+          decorators: ['cool', 'calm']
         }
       ],
       config: {
-        enhancers: get()
+        decorators: get()
       }
     }
 

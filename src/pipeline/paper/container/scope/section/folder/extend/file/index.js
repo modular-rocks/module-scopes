@@ -2,15 +2,15 @@ const type = 'File'
 
 export default function extend(env) {
   const { modules } = env
-  const ex = env.config.enhancers
+  const ex = env.config.decorators
 
   return (meta, i) => {
     const prevFn = modules[i]
-    if (!meta.enhancers || !meta.enhancers.length) return prevFn
+    if (!meta.decorators || !meta.decorators.length) return prevFn
 
-    const enhancers = meta.enhancers.map((x) => ex[x]).filter(Boolean)
+    const decorators = meta.decorators.map((x) => ex[x]).filter(Boolean)
     let fn = prevFn
-    const pipe = enhancers.map((m) => {
+    const pipe = decorators.map((m) => {
       fn = (m.default || m).apply(this, [fn, env, type])
     })
     return fn

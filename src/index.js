@@ -3,7 +3,7 @@ const pipeline = require('./pipeline')
 const factories = require('./factories')
 const store = require('./store')
 const features = require('./features')
-const enhancers = require('./enhancers')
+const decorators = require('./decorators')
 
 const { build, get, prepare, wrap } = features
 
@@ -15,7 +15,7 @@ export default {
   get,
   prepare,
   wrap,
-  enhancers,
+  decorators,
   features,
   store
 }

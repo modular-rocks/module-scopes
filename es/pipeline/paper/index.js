@@ -3,7 +3,7 @@ import clean from './clean';
 import container from './container';
 import reload from './reload';
 import { set } from '../../store';
-import { get } from '../../enhancers';
+import { get } from '../../decorators';
 
 var asc = function asc(a, b) {
   return a.length - b.length;
@@ -27,7 +27,7 @@ var wrap = function wrap(metadataContainer, opts) {
     },
     config: {
       opts: opts,
-      enhancers: get()
+      decorators: get()
     }
   };
 

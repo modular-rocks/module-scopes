@@ -5,17 +5,17 @@ export default function extend(env) {
 
   var modules = env.modules;
 
-  var ex = env.config.enhancers;
+  var ex = env.config.decorators;
 
   return function (meta, i) {
     var prevFn = modules[i];
-    if (!meta.enhancers || !meta.enhancers.length) return prevFn;
+    if (!meta.decorators || !meta.decorators.length) return prevFn;
 
-    var enhancers = meta.enhancers.map(function (x) {
+    var decorators = meta.decorators.map(function (x) {
       return ex[x];
     }).filter(Boolean);
     var fn = prevFn;
-    var pipe = enhancers.map(function (m) {
+    var pipe = decorators.map(function (m) {
       fn = (m.default || m).apply(_this, [fn, env, type]);
     });
     return fn;

@@ -14,7 +14,7 @@ export default (function (relativeFolderPath, section, env) {
 
   var _splitName = splitName(action),
       name = _splitName[0],
-      enhancers = _splitName.slice(1);
+      decorators = _splitName.slice(1);
 
   var scope = section.scope;
   var relativePath = createPath(scope.path, relativeFolderPath, section.factory);
@@ -30,7 +30,7 @@ export default (function (relativeFolderPath, section, env) {
   return {
     action: action,
     name: name,
-    enhancers: enhancers,
+    decorators: decorators,
     relativeFolderPath: relativeFolderPath,
     relativePath: relativePath,
     absolutePath: absolutePath,

@@ -1,4 +1,4 @@
-export default (enhancers) => (ext) => {
-  let fn = enhancers[ext]
+export default (decorators) => (ext) => {
+  let fn = decorators[ext]
   return fn ? (fn.default || fn) : undefined
 }

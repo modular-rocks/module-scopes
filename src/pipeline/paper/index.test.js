@@ -3,7 +3,7 @@ import { refine } from '.././rocks'
 import { cut } from '.././scissors'
 import { Scope, Procedural } from '../.././factories'
 import { clean } from '../.././tools'
-import { add } from '../.././enhancers'
+import { add } from '../.././decorators'
 const Rocks = { refine }
 const Paper = { wrap, build, inherit }
 const Scissors = { cut }
@@ -86,7 +86,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.two({num: 4})).toEqual(8);
   });
 
-  test("Enhancers work", () => {
+  test("Decorators work", () => {
     opts.dir = dir
     opts.bundler = bundler
     bundler.set('dir', dir)
@@ -110,7 +110,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext.demo).toEqual(12);
   });
 
-  test("Enhancers work 2", () => {
+  test("Decorators work 2", () => {
     opts.dir = dir
     opts.bundler = bundler
     bundler.set('dir', dir)
@@ -134,7 +134,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext2({})).toEqual(33);
   });
 
-  test("Enhancers work 3", () => {
+  test("Decorators work 3", () => {
     opts.dir = dir
     opts.factories = [new Procedural('rocks')]
     opts.bundler = bundler
@@ -157,7 +157,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext2).toEqual(33);
   });
 
-  test("Enhancers work 4", () => {
+  test("Decorators work 4", () => {
     opts.dir = dir
     opts.factories = [new Procedural('rocks')]
     const fn = () => 3
@@ -184,7 +184,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext2({})).toEqual(4);
   });
 
-  test("Enhancers work 5 - multiple works 1", () => {
+  test("Decorators work 5 - multiple works 1", () => {
     opts.dir = dir
     opts.factories = [new Procedural('rocks')]
 
@@ -217,7 +217,7 @@ describe("ModularRocks paper wrap", () => {
     expect(testRock.rocks.ext3({})).toEqual(12);
   });
 
-  test("Deep enhancers work", () => {
+  test("Deep decorators work", () => {
     opts.dir = dir
     opts.factories = [new Procedural('rocks')]
 

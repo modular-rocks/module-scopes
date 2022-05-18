@@ -1,10 +1,10 @@
 import {
   hasNumber,
-  hasEnhancers,
+  hasDecorators,
   setNumber,
   setName,
-  setFileEnhancer,
-  setEnhancers
+  setFileDecorator,
+  setDecorators
 } from './tools'
 
 import { splitPath, last } from '../../../.././tools'
@@ -14,7 +14,7 @@ const extract = (filename) => {
   const pieces = last(splitPath(filename)).split('.')
 
   setName(object, pieces)
-  setFileEnhancer(object, pieces)
+  setFileDecorator(object, pieces)
 
   object.filename = filename
 

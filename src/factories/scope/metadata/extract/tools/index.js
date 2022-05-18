@@ -1,5 +1,5 @@
 const hasNumber = (pieces) => !isNaN(pieces[0])
-const hasEnhancers = (object, pieces) => {
+const hasDecorators = (object, pieces) => {
   return pieces.length > 0
 }
 const setNumber = (object, pieces) => {
@@ -14,21 +14,21 @@ const setName = (object, pieces) => {
   pieces.splice(0, 1)
 }
 
-const setFileEnhancer = (object, pieces) => {
-  object.fileEnhancer = pieces.slice(-1)[0]
+const setFileDecorator = (object, pieces) => {
+  object.fileDecorator = pieces.slice(-1)[0]
   pieces.splice(-1, 1)
-  if (hasEnhancers(object, pieces)) return setEnhancers(object, pieces)
+  if (hasDecorators(object, pieces)) return setDecorators(object, pieces)
 }
 
-const setEnhancers = (object, pieces) => {
-  object.enhancers = pieces.reverse()
+const setDecorators = (object, pieces) => {
+  object.decorators = pieces.reverse()
 }
 
 export {
   hasNumber,
-  hasEnhancers,
+  hasDecorators,
   setNumber,
   setName,
-  setFileEnhancer,
-  setEnhancers
+  setFileDecorator,
+  setDecorators
 }

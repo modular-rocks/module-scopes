@@ -19,29 +19,29 @@ describe("ModularRocks Scope metadata", () => {
       {
         num: '1',
         name: 'hello',
-        fileEnhancer: 'js',
+        fileDecorator: 'js',
         filename: '1.hello.js'
       },
-      { num: '2', name: 'hi', fileEnhancer: 'js', filename: '2.hi.js' },
-      { num: '3', name: 'bye', fileEnhancer: 'js', filename: '3.bye.js' },
+      { num: '2', name: 'hi', fileDecorator: 'js', filename: '2.hi.js' },
+      { num: '3', name: 'bye', fileDecorator: 'js', filename: '3.bye.js' },
       {
         num: '4',
         name: 'goodbye',
-        fileEnhancer: 'js',
+        fileDecorator: 'js',
         filename: '4.goodbye.js'
       }
     ]
     expect(example).toEqual(expected);
   });
 
-  test("Files with enhancers are refined", () => {
+  test("Files with decorators are refined", () => {
     const scope = {}
     const relativePath = '/one/two/three/'
     const section = {
       [relativePath]: [
         '1.hello.js',
         '2.hi.js',
-        '3.bye.has-enhancers.cool.js',
+        '3.bye.has-decorators.cool.js',
         '4.goodbye.js',
       ]
     }
@@ -52,20 +52,20 @@ describe("ModularRocks Scope metadata", () => {
       {
         num: '1',
         name: 'hello',
-        fileEnhancer: 'js',
+        fileDecorator: 'js',
         filename: '1.hello.js'
       },
-      { num: '2', name: 'hi', fileEnhancer: 'js', filename: '2.hi.js' },
+      { num: '2', name: 'hi', fileDecorator: 'js', filename: '2.hi.js' },
       {
         num: '3',
         name: 'bye',
-        fileEnhancer: 'js',
-        filename: '3.bye.has-enhancers.cool.js',
-        enhancers: ['cool', 'has-enhancers'] },
+        fileDecorator: 'js',
+        filename: '3.bye.has-decorators.cool.js',
+        decorators: ['cool', 'has-decorators'] },
       {
         num: '4',
         name: 'goodbye',
-        fileEnhancer: 'js',
+        fileDecorator: 'js',
         filename: '4.goodbye.js'
       }
     ]

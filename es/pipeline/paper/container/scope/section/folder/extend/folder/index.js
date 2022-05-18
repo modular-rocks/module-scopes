@@ -4,12 +4,12 @@ var isFunction = function isFunction(fn) {
 var type = 'Folder';
 
 export default (function (prevFn, env) {
-  var enhancers = env.data.folder.enhancers.slice();
-  if (!enhancers.length) return prevFn(env);
+  var decorators = env.data.folder.decorators.slice();
+  if (!decorators.length) return prevFn(env);
 
-  var fn1 = enhancers.splice(0, 1)[0];
+  var fn1 = decorators.splice(0, 1)[0];
   var fn = fn1(prevFn, env, type);
-  enhancers.map(function (m) {
+  decorators.map(function (m) {
     fn = m(fn, env, type);
   });
   return fn;

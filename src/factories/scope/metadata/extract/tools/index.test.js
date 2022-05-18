@@ -1,10 +1,10 @@
 import {
   hasNumber,
-  hasEnhancers,
+  hasDecorators,
   setNumber,
   setName,
-  setFileEnhancer,
-  setEnhancers
+  setFileDecorator,
+  setDecorators
 } from './index.js'
 
 describe("ModularRocks unpack tools", () => {
@@ -20,19 +20,19 @@ describe("ModularRocks unpack tools", () => {
     expect(example).toEqual(false);
   });
 
-  test("ModularRocks unpack hasEnhancer with extension", () => {
+  test("ModularRocks unpack hasDecorator with extension", () => {
     const pieces = 'setup.redux.js'.split('.')
     const obj = {name: 'setup'}
-    const example = hasEnhancers(obj, pieces)
+    const example = hasDecorators(obj, pieces)
     expect(example).toEqual(true);
   });
 
-  test("ModularRocks unpack hasEnhancer without extension", () => {
+  test("ModularRocks unpack hasDecorator without extension", () => {
     const pieces = 'setup.js'.split('.')
     const obj = {}
     setName(obj, pieces)
-    setFileEnhancer(obj, pieces)
-    const example = hasEnhancers(obj, pieces)
+    setFileDecorator(obj, pieces)
+    const example = hasDecorators(obj, pieces)
     expect(example).toEqual(false);
   });
 
@@ -58,26 +58,26 @@ describe("ModularRocks unpack tools", () => {
     expect(obj.name).toEqual('setup');
   });
 
-  test("ModularRocks unpack setFileEnhancer", () => {
+  test("ModularRocks unpack setFileDecorator", () => {
     const pieces = '1.setup.js'.split('.')
     const obj = {}
-    setFileEnhancer(obj, pieces)
-    expect(obj.fileEnhancer).toEqual('js');
+    setFileDecorator(obj, pieces)
+    expect(obj.fileDecorator).toEqual('js');
   });
 
-  test("ModularRocks unpack setEnhancer", () => {
+  test("ModularRocks unpack setDecorator", () => {
     const pieces = '1.setup.redux.js'.split('.')
     const obj = {}
     setName(obj, pieces)
-    setFileEnhancer(obj, pieces)
-    expect(obj.enhancers).toEqual(['redux']);
+    setFileDecorator(obj, pieces)
+    expect(obj.decorators).toEqual(['redux']);
   });
 
-  test("ModularRocks unpack setEnhancer 2", () => {
+  test("ModularRocks unpack setDecorator 2", () => {
     const pieces = '1.setup.redux.react.js'.split('.')
     const obj = {}
     setName(obj, pieces)
-    setFileEnhancer(obj, pieces)
-    expect(obj.enhancers).toEqual(['react', 'redux']);
+    setFileDecorator(obj, pieces)
+    expect(obj.decorators).toEqual(['react', 'redux']);
   });
 });

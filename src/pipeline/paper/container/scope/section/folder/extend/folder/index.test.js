@@ -8,7 +8,7 @@ describe("ModularRocks paper prep extend config configure", () => {
     const env = {
       data: {
         folder: {
-          enhancers: [ext]
+          decorators: [ext]
         }
       },
       metadata: {
@@ -27,7 +27,7 @@ describe("ModularRocks paper prep extend config configure", () => {
     const env = {
       data: {
         folder: {
-          enhancers: [ext]
+          decorators: [ext]
         }
       },
       metadata: {
@@ -55,7 +55,7 @@ describe("ModularRocks paper prep extend config configure", () => {
     const env = {
       data: {
         folder: {
-          enhancers: [ext, ext2]
+          decorators: [ext, ext2]
         }
       },
       metadata: {
