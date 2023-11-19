@@ -1,5 +1,5 @@
-## Modular Rocks Logic
+## An old ModularRocks framework
 
-### What is it?
+An old framework for automatically compiling modules into scopes.
 
-Documentation coming soon
+http://module-scopes.modular.rocks/docs/intro
